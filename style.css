@@ -1,0 +1,243 @@
+:root {
+  --bg: #0c0c0f;
+  --bg-soft: #13131a;
+  --text: #f7f7fb;
+  --muted: #c2c2d2;
+  --primary: #5de4c7;
+  --accent: #7c9bff;
+  --card: #161621;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+  --gradient: linear-gradient(135deg, rgba(93, 228, 199, 0.1), rgba(124, 155, 255, 0.12));
+  --font: "Space Grotesk", "Segoe UI", sans-serif;
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+body.light {
+  --bg: #f5f6fa;
+  --bg-soft: #ffffff;
+  --text: #0d0d14;
+  --muted: #4b4b5c;
+  --primary: #0d9488;
+  --accent: #2563eb;
+  --card: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --shadow: 0 20px 70px rgba(0, 0, 0, 0.12);
+  --gradient: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(37, 99, 235, 0.08));
+  color-scheme: light;
+}
+
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  /* background-color: rgb(20, 20, 20); */
+  /* color: white; */
+}
+
+/* From Uiverse.io by JulanDeAlb */
+ /* drop down button */
+.hamburger {
+  cursor: pointer;
+  display: none;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  /* The size of the SVG defines the overall size */
+  height: 2.8em;
+  /* Define the transition for transforming the SVG */
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  /* Define the transition for transforming the Stroke */
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 1.5rem 4rem;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+a{
+  color: var(--text);
+  text-emphasis: none;
+}
+
+a:hover, 
+button:hover {
+  color: var(--primary);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0 0.7rem;
+  background: var(--bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid var(--border);
+  /* background-color: rgb(181, 41, 41); */
+}
+
+.name{
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 32px;
+  /* line-height: 1.1; */
+}
+
+.nav{
+  display: flex;
+  gap: 1rem;
+  /* background-color: #0f246a; */
+}
+
+.nav.open { 
+  display: flex; 
+}
+
+.nav a{
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* background-color: red; */
+}
+.nav a:hover,
+.nav a:focus-visible {
+  background: var(--gradient);
+  outline: none;
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.theme-toggle:active {
+  transform: translateY(1.2px);
+}
+
+@media (max-width: 895px) and (min-width: 791px) {
+  .name{
+    line-height: 1.2;
+  }
+}
+
+/* for tablet and smaller devices */
+@media (max-width: 790px) {
+  .line{
+    stroke: rgb(144, 152, 144);
+  }
+
+  .name{
+    font-size: 4.7vmax;
+  }
+
+  #menu-toggle {
+    display: block;
+  }
+
+  .menu-and-theme{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    /* background-color: khaki; */
+  }
+
+  .site-header {
+    gap: 0.8rem;
+    flex-wrap: nowrap;
+  }
+
+  #menu-toggle {
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    background: var(--card);
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  .nav {
+    display: none;
+    position: fixed;
+    top: 82px;
+    /* left: 0; */
+    right: 0;
+    width: 100%;
+    background: var(--bg);
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 0;
+    line-height: 1.5;    
+    /* background-color: #39393f; */
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0;
+    /* line-height: 1; */
+  }
+
+}
+
+@media (max-width: 351px) {
+  .name{
+    line-height: 1.4;
+  }
+}
